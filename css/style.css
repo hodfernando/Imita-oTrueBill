@@ -1,0 +1,183 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,900);
+
+body {
+	background: linear-gradient(#A4D8CC 50%, #fdfdfd 50%) no-repeat;
+	background: -webkit-linear-gradient(#A4D8CC 50%, #fdfdfd 50%) no-repeat;
+	background: -moz-linear-gradient(#A4D8CC 50%, #fdfdfd 50%) no-repeat;
+	background: -o-linear-gradient(#A4D8CC 50%, #fdfdfd 50%) no-repeat;
+	font-family: 'Lato', Arial, sans-serif;
+	height: 100%;
+	align-content: center;
+}
+
+.wrapper {
+	margin: 0 auto 100px auto;
+	max-width: 960px;
+}
+
+.stage {
+	list-style: none;
+	padding: 0;
+}
+
+/*************************************
+Montando o cubo e rotacionando no hover
+**************************************/
+
+.cubo {
+	width: 260px;
+	height: 400px;
+	margin: 30px;
+	float: left;
+	-webkit-perspective: 1000px;
+	-moz-perspective: 1000px;
+	perspective: 1000px;
+}
+
+.capa {
+	width: 260px;
+	height: 400px;
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-webkit-transform: translateZ(-130px);
+	-moz-transform: translateZ(-130px);
+	transform: translateZ(-130px);
+	-webkit-transition: -webkit-transform 350ms;
+	-moz-transition: -moz-transform 350ms;
+	transition: transform 350ms;
+}
+
+.capa:hover {
+	-webkit-transform: rotateY(-78deg) translateZ(20px);
+	-moz-transform: rotateY(-78deg) translateZ(20px);
+	transform: rotateY(-78deg) translateZ(20px);
+}
+
+/*************************************
+		Onde a magica acontece
+**************************************/
+
+.capa .frente, 
+.capa .info {
+	position: absolute;
+	width: 260px;
+	height: 400px;
+	background-color: #fdfdfd;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
+	border-radius: 10px 80px 10px 80px;
+	box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.5);
+}
+
+.capa .frente  {
+	-webkit-transform: translateZ(130px);
+	-moz-transform: translateZ(130px);
+	transform: translateZ(130px);
+	background-size: auto;
+	background-repeat: no-repeat;
+	background-color: #fdfdfd;
+	background-position: center;
+}
+
+.capa .info {
+	-webkit-transform: rotateY(90deg) translateZ(130px);
+	-moz-transform: rotateY(90deg) translateZ(130px);
+	transform: rotateY(90deg) translateZ(130px);
+	border: 1px solid #CFD6DE;
+	font-size: 0.75em;
+}
+
+/*************************************
+			capa e info
+**************************************/
+
+.info header {
+	color: #EEE;
+	margin-top: 100px;
+	padding: 7px 10px;
+	font-weight: lighter;
+	
+	background: linear-gradient(#fdfdfd, #A2B1C1);
+	background: -webkit-linear-gradient(#fdfdfd, #A2B1C1);
+	background: -moz-linear-gradient(#fdfdfd, #A2B1C1);
+	background: -o-linear-gradient(#fdfdfd, #A2B1C1);
+	text-shadow: 0px 1px 1px rgba(0,0,0,1);
+}
+
+.info header h1 {
+	margin: 0px 2px 0px;
+	font-size: large;
+}
+
+.info p {
+	padding: 1.2em 1.4em;
+	margin: 0 0;
+	font-size: medium;
+	color: #A2B1C1;
+	border-top: 10px solid #547190;
+}
+
+/*************************************
+			Gerando luz
+**************************************/
+
+.capa .frente,
+.capa .info,
+.capa .info header {
+	-webkit-transition: box-shadow 350ms;
+	-moz-transition: box-shadow 350ms;
+	transition: box-shadow 350ms;
+}
+
+.capa:hover .frente {
+	box-shadow: inset 300px 0px 40px rgba(255,255,255,0.8);
+}
+
+.capa .frente header{
+	position: absolute;
+	bottom: 0;
+	right: 5%;
+	color: #6E99A3;
+}
+
+
+.capa .info, 
+.capa .info header {
+	box-shadow: inset -300px 0px 40px rgba(0,0,0,0.5);
+}
+
+.capa:hover .info, 
+.capa:hover .info header {
+	box-shadow: inset 0px 0px 40px rgba(0,0,0,0);
+}
+
+/*************************************
+			Inserindo imagens
+**************************************/
+
+.cubo:nth-child(1) .capa .frente {
+  	background-image: url(../img/numero1.png);
+  	
+}
+
+.cubo:nth-child(2) .capa .frente {
+	background-image: url(../img/numero2.png);
+	
+}
+
+.cubo:nth-child(3) .capa .frente {
+	background-image: url(../img/numero3.png);
+	
+}
+
+/*************************************
+			Media Queries
+**************************************/
+@media screen and (max-width: 60.75em){
+	.cubo {
+		float: none;
+		margin: 30px auto 60px;
+	}
+}
